@@ -1,0 +1,10 @@
+[user]
+	email = acursed_comrade@proton.me
+	name = aCursedComrade
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHiKIVsLqjFii0vhj+lz2yotTpuIy15OfrADzryXUf2U aCursed_Comrade@proton.me
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
