@@ -39,7 +39,7 @@ pyvenv() {
 }
 
 # aliases
-if [ -x $(command -v eza) ];then
+if [ -x "$(command -v eza)" ];then
 	alias ll='eza -gl -s type --icons'
 	alias la='eza -agl -s type --icons'
 	alias lt='eza -agT -s type --icons'
@@ -54,5 +54,5 @@ alias ip='ip -c=always'
 alias pn='pnpm'
 alias nv='nvim'
 
-echo "Yet another day, we survive: $USER@$HOST"
+echo "Yet another day, we survive: $(whoami)@$(hostname)"
 

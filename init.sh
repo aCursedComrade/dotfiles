@@ -45,7 +45,7 @@ else
 fi
 echo "[#] Done with dotfiles."
 
-tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap)
+tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap)
 gui=(firefox code terminator obsidian thunderbird conky)
 
 echo "[#] Checking for general tools..."
