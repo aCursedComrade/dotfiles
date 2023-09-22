@@ -2,6 +2,8 @@
 # zsh: ~/.zlogin
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+export PAGER='less'
+export LESS='-IRs'
 
 # add pnpm bin to PATH
 if [ -d "$HOME/.local/share/pnpm" ]; then
@@ -54,5 +56,5 @@ alias ip='ip -c=always'
 alias pn='pnpm'
 alias nv='nvim'
 
-echo "Yet another day, we survive: $(whoami)@$(hostname)"
-
+[ ! -v "USER_INIT" ] && echo "Yet another day, we survive: $(whoami 2> /dev/null)@$(hostname 2> /dev/null)"
+export USER_INIT=1
