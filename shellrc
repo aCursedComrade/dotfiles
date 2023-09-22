@@ -56,5 +56,4 @@ alias ip='ip -c=always'
 alias pn='pnpm'
 alias nv='nvim'
 
-[ ! -v "USER_INIT" ] && echo "Yet another day, we survive: $(whoami 2> /dev/null)@$(hostname 2> /dev/null)"
-export USER_INIT=1
+echo "Yet another day, we survive: $(whoami 2> /dev/null)@$(hostname 2> /dev/null)"
