@@ -1,19 +1,32 @@
 # sh, bash: ~/.profile
 # zsh: ~/.zlogin
+# are we running bash
+if [ -v "BASH_VERSION" ]; then
+	# include .bashrc
+	if [ -f "$HOME/.bashrc" ];then
+		source "$HOME/.bashrc"
+	fi
+fi
+
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export PAGER='less'
 export LESS='-IRs'
 
-# add pnpm bin to PATH
-if [ -d "$HOME/.local/share/pnpm" ]; then
-	export PNPM_HOME="$HOME/.local/share/pnpm"
-	export PATH="$PATH:$PNPM_HOME"
+# add user's private bin to PATH
+if [ -d "$HOME/.local/bin" ] ; then
+    export -U PATH="$HOME/.local/bin:$PATH"
 fi
 
 # add cargo bin to PATH
 if [ -d "$HOME/.cargo/bin" ]; then
-	export PATH="$PATH:$HOME/.cargo/bin"
+	export -U PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# add pnpm bin to PATH
+if [ -d "$HOME/.local/share/pnpm" ]; then
+	export PNPM_HOME="$HOME/.local/share/pnpm"
+	export -U PATH="$PNPM_HOME:$PATH"
 fi
 
 # set EDITOR
@@ -27,7 +40,7 @@ fi
 if [ -x "$(command -v keychain)" ]; then
 	eval $(keychain --eval -q comrade)
 else
-	echo "keychain not found in the system"
+	echo "[!] keychain not found in the system"
 fi
 
 # to switch between python venv
@@ -46,8 +59,8 @@ if [ -x "$(command -v eza)" ];then
 	alias la='eza -agl -s type --icons'
 	alias lt='eza -agT -s type --icons'
 else
-	alias ll="ls -lhXF"
-	alias la="ls -AlhXF"
+	alias ll="ls --color=auto -lhXF"
+	alias la="ls --color=auto -AlhXF"
 fi
 alias wtfismyip='curl yaml.myip.wtf'
 alias tb='nc termbin.com 9999'
