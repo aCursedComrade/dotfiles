@@ -38,7 +38,7 @@ fi
 
 # use keychain to load ssh keys
 if [ -x "$(command -v keychain)" ]; then
-	eval $(keychain --eval -q comrade)
+	eval $(keychain --ignore-missing --eval -q comrade)
 else
 	echo "[!] keychain not found in the system"
 fi
