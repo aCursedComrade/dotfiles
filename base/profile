@@ -1,9 +1,7 @@
-# sh, bash: ~/.profile
-# zsh: ~/.zlogin
 # are we running bash
 if [ -v "BASH_VERSION" ]; then
 	# include .bashrc
-	if [ -f "$HOME/.bashrc" ];then
+	if [ -f "$HOME/.bashrc" ]; then
 		source "$HOME/.bashrc"
 	fi
 fi
@@ -14,7 +12,7 @@ export PAGER='less'
 export LESS='-IRs'
 
 # add user's private bin to PATH
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
     export -U PATH="$HOME/.local/bin:$PATH"
 fi
 
@@ -54,7 +52,7 @@ pyvenv() {
 }
 
 # aliases
-if [ -x "$(command -v eza)" ];then
+if [ -x "$(command -v eza)" ]; then
 	alias ll='eza -gl -s type --icons'
 	alias la='eza -agl -s type --icons'
 	alias lt='eza -agT -s type --icons'
