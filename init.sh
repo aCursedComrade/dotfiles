@@ -1,13 +1,13 @@
 #!/bin/env bash
-
 if [ ! -v "HOME" ]; then
-    echo "HOME is not set. Please set it first and run the script"
+    echo "[!] HOME is not set. Please set it first and run the script"
     exit 1
 fi
 
 # verify the dotfile config root
 if [ ! -d "$HOME/.dotfiles" ] && [ ! -v "CONFIG_ROOT" ]; then
-    echo "CONFIG_ROOT or $HOME/.dotfiles/ is not set/found. Set or create either one to proceed."
+    echo "[!] CONFIG_ROOT or $HOME/.dotfiles/ is not set/found."
+    echo "[!] Set the CONFIG_ROOT variable or move the dotfiles into $HOME/.dotfiles."
     exit 1
 else
     if [ ! -v "CONFIG_ROOT" ]; then
@@ -15,74 +15,85 @@ else
     fi
 fi
 
-# source util script
+# source our scripts
 source $CONFIG_ROOT/util.sh
+source $CONFIG_ROOT/base.sh
+source $CONFIG_ROOT/extra.sh
 
-check_bins() {
-    tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap)
-    gui=(firefox code terminator alacritty obsidian thunderbird conky)
-
-    echo "[#] Checking for tools and applications... (Only missing ones are reported)"
-    for bin in ${tools[@]}; do
-        if [ -x "$(command -v $bin)" ]; then
-            #echo -e "${GREEN}[+] $bin: OK.${RESET}"
-            continue
-        else
-            echo -e "${RED}[-] $bin: Not found in PATH${RESET}"
-        fi
-    done
-
-    for bin in ${gui[@]}; do
-        if [ -x "$(command -v $bin)" ]; then
-            #echo -e "${GREEN}[+] $bin: OK.${RESET}"
-            continue
-        else
-            echo -e "${RED}[-] $bin: Not found in PATH${RESET}"
-        fi
-    done
-    echo "[#] Done with tools and application check."
+options() {
+    # ascii art time
+    echo -e "\n"
+    echo -e "\t   \\  \\  \\"
+    echo -e "\t   /  /  /"
+    echo -e "\t   \\  \\  \\"
+    echo -e "\t ___________"
+    echo -e "\t |         |"
+    echo -e "\t |         |"
+    echo -e "\t |         |"
+    echo -e "\t \\_________/"
+    echo -e "\t ___________"
+    # echo -e "\n"
+    # echo -e "\t [#] Base configs: $base_config"
+    # echo -e "\t [#] Extra configs: $extra_config"
+    echo -e "\n"
+    echo -e "\t Key \t\t Description"
+    echo -e "\t --- \t\t -----------"
+    echo -e "\t  1  \t\t ${RED}OVERRIDE${RESET} all configs"
+    echo -e "\t  2  \t\t ${RED}OVERRIDE${RESET} only the BASE configs"
+    echo -e "\t  3  \t\t ${RED}OVERRIDE${RESET} only the EXTRA configs"
+    echo -e "\t --- \t\t -----------"
+    echo -e "\t  q  \t\t Checks for installed applications"
+    echo -e "\t  w  \t\t Install all missing configs"
+    echo -e "\t  e  \t\t Install only the missing BASE configs"
+    echo -e "\t  r  \t\t Install only the missing EXTRA configs"
+    echo -e "\t  a  \t\t Add alacritty themes"
+    echo -e "\t  n  \t\t Add nvim config"
+    echo -e "\t --- \t\t -----------"
+    echo -e "\t  h  \t\t Show this menu"
+    echo -e "\t  c  \t\t Clear screen"
+    echo -e "\t  x  \t\t Exit"
+    echo -e "\n"
 }
 
-base_env() {
-    base_config=$(ls $CONFIG_ROOT/base)
+menu() {
+    clear
+    options
 
-    echo "[#] Checking and installing base config files..."
-    for config in ${base_config[@]}; do
-        if [ -v "OVERRIDE_CUR" ]; then
-            ln -sLf "$CONFIG_ROOT/base/$config" "$HOME/.$config"
-            echo -e "${GREEN}[+] $HOME/.$config has been FORCE installed.${RESET}"
-        elif [ -f "$HOME/.$config" ] || [ -L "$HOME/.$config" ]; then
-            echo -e "${YELLOW}[!] $HOME/.$config already exists. Set OVERRIDE_CUR=1 to force install.${RESET}"
-        else
-            ln -sL "$CONFIG_ROOT/base/$config" "$HOME/.$config"
-            echo -e "${GREEN}[+] $HOME/.$config installed.${RESET}"
-        fi
+    while :
+    do
+        read -p "[#] Select an option (Press h to see the menu): " selection
+
+        case $selection in
+            1) 
+                OVERRIDE_CUR=1
+                base_env
+                extra_env
+                unset OVERRIDE_CUR
+                ;;
+            2) 
+                OVERRIDE_CUR=1
+                base_env
+                unset OVERRIDE_CUR
+                ;;
+            3) 
+                OVERRIDE_CUR=1
+                extra_env
+                unset OVERRIDE_CUR
+                ;;
+            q|Q) check_bins ;;
+            w|W) base_env; extra_env ;;
+            e|E) base_env ;;
+            r|R) extra_env ;;
+            a|A) alacritty_themes ;;
+            n|N) nvim_config ;;
+            h|H) options ;;
+            c|C) clear ;;
+            x|X) break ;;
+            *) continue
+        esac
     done
-    echo "[#] Done with base configs."
 
-    # extra configs
-    if [ -v "INCLUDE_EXTRA" ]; then
-        source $CONFIG_ROOT/extra.sh
-    else
-        echo "[#] Skipping extra configs. Set INCLUDE_EXTRA=1 to include the step."
-    fi
-
-    # fancy nvim config
-    if [ -v "INCLUDE_NVIM" ]; then
-        source $CONFIG_ROOT/nvim.sh
-    else
-        echo "[#] Skipping nvim config. Set INCLUDE_NVIM=1 to include the step."
-    fi
+    echo "[+] Enjoy the new environment o7"
 }
 
-init() {
-    mkdir -p $HOME/.vim/backup/
-    mkdir -p $HOME/.config/
-
-    check_bins
-    base_env
-
-    echo "[#] Enjoy the new system o7"
-}
-
-init
+menu

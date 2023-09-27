@@ -7,7 +7,7 @@ if not vim.loop.fs_stat(lazypath) then
         "clone",
         "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
+        "--branch=stable",
         lazypath,
     })
 end
@@ -19,7 +19,7 @@ require("lazy").setup({
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd [[colorscheme tokyonight-storm]]
+            vim.cmd [[colorscheme tokyonight-night]]
         end,
         opts = {},
     },
