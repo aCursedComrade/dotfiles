@@ -3,7 +3,7 @@ extra_config=$(ls $CONFIG_ROOT/extra)
 extra_env() {
     for config in ${extra_config[@]}; do
         if [ -v "OVERRIDE_CUR" ]; then
-            ln -sLf "$CONFIG_ROOT/base/$config" "$HOME/.$config"
+            ln -sLf "$CONFIG_ROOT/extra/$config" "$HOME/.$config"
             echo -e "${GREEN}[+] $HOME/.$config has been FORCE installed.${RESET}"
         elif [ -f "$HOME/.$config" ] || [ -L "$HOME/.$config" ]; then
             echo -e "${YELLOW}[!] $HOME/.$config already exists. Set OVERRIDE_CUR=1 to force install.${RESET}"
@@ -23,14 +23,14 @@ nvim_config() {
 
         case $option in
             y|Y)
-                ln -sLf "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
+                ln -sfn "$CONFIG_ROOT/nvim/" "$HOME/.config/nvim"
                 echo -e "${GREEN}[+] $HOME/.config/nvim has been FORCE installed.${RESET}"
                 ;;
             *) echo -e "${YELLOW}[!] Skipping nvim config.${RESET}"
         esac
 
     else
-        ln -sL "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
+        ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
         echo -e "${GREEN}[+] $HOME/.config/nvim installed.${RESET}"
     fi
 }
