@@ -1,6 +1,6 @@
 # checks for installed applcations
 check_bins() {
-    tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap)
+    tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap ufw)
     gui=(firefox code terminator alacritty obsidian thunderbird conky)
 
     for bin in ${tools[@]}; do
