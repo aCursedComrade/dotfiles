@@ -34,10 +34,10 @@ if [ -d "$HOME/.local/share/pnpm" ]; then
 fi
 
 # set EDITOR
-if [ -x "$(command -v nvim)" ]; then
-    export EDITOR='nvim'
-else
+if [ -x "$(command -v vim)" ]; then
     export EDITOR='vim'
+else
+    export EDITOR='vi'
 fi
 
 # use keychain to load ssh keys
