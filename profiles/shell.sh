@@ -1,4 +1,7 @@
-# are we running bash
+DOTFILES="$HOME/.dotfiles"
+source $DOTFILES/profiles/funcs.sh
+
+# include ~/.bashrc if we are on bash
 if [ -v "BASH_VERSION" ]; then
     # include .bashrc
     if [ -f "$HOME/.bashrc" ]; then
@@ -13,9 +16,6 @@ else
     export LANG="C.UTF-8"
     export LC_ALL="C.UTF-8"
 fi
-export TERM='xterm-256color'
-export PAGER='less'
-export LESS='-IRs'
 
 # add user's private bin to PATH
 if [ -d "$HOME/.local/bin" ]; then
@@ -39,23 +39,9 @@ if [ -x "$(command -v vim)" ]; then
 else
     export EDITOR='vi'
 fi
-
-# use keychain to load ssh keys
-if [ -x "$(command -v keychain)" ]; then
-    eval $(keychain --ignore-missing --eval -q comrade)
-else
-    echo "[!] keychain not found in the system"
-fi
-
-# to switch between python venv
-pyvenv() {
-    if [ -d "$HOME/.pyvenv" ]; then
-        source "$HOME/.pyvenv/bin/activate"
-    else
-        echo "$HOME/.pyenv does not exist."
-        echo "Create a new venv with: python -m venv $HOME/.pyvenv"
-    fi
-}
+export TERM='xterm-256color'
+export PAGER='less'
+export LESS='-IRs'
 
 # aliases
 if [ -x "$(command -v eza)" ]; then
@@ -72,5 +58,10 @@ alias grep='grep --color=auto'
 alias ip='ip -c=always'
 alias pn='pnpm'
 alias nv='nvim'
+
+# use keychain to load ssh keys
+if [ -x "$(command -v keychain)" ]; then
+    eval $(keychain --ignore-missing --eval -q comrade)
+fi
 
 echo "Yet another day, we survive: $(whoami 2> /dev/null)@$(hostname 2> /dev/null)"
