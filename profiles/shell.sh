@@ -52,6 +52,7 @@ else
     alias ll="ls --color=auto -lhXF"
     alias la="ls --color=auto -AlhXF"
 fi
+alias dotfiles="bash $HOME/.dotfiles/init.sh"
 alias wtfismyip='curl yaml.myip.wtf'
 alias tb='nc termbin.com 9999'
 alias grep='grep --color=auto'

@@ -16,9 +16,9 @@ else
 fi
 
 # source our scripts
-source $CONFIG_ROOT/util.sh
-source $CONFIG_ROOT/base.sh
-source $CONFIG_ROOT/extra.sh
+source $CONFIG_ROOT/src/util.sh
+source $CONFIG_ROOT/src/base.sh
+source $CONFIG_ROOT/src/extra.sh
 
 options() {
     # ascii art time

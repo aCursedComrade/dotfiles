@@ -9,6 +9,18 @@ pyvenv() {
     fi
 }
 
+# https://cjbarker.com/blog/creating-high-entropy-passwords-on-linux/
+genpasswd() {
+    if [ $# -eq 0 ]; then
+        passwd=$(LC_ALL=C tr -dc 'A-Za-z0-9!@#$%^&*()<>/?' < /dev/urandom | head -c 16; echo)
+        echo "${passwd}"
+    else
+        # custom length support
+        passwd=$(LC_ALL=C tr -dc 'A-Za-z0-9!@#$%^&*()<>/?' < /dev/urandom | head -c "$1"; echo)
+        echo "${passwd}"
+    fi
+}
+
 # https://transfer.sh/
 transfer() {
     if [ $# -eq 0 ]; then
