@@ -38,12 +38,12 @@ transfer() {
         fi
 
         if [ -d "$file" ]; then
-            (zip -r -q - "$file") | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name.zip" | tee /dev/null
+            (zip -r -q - "$file") | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name.zip" | tee /dev/null; echo
         else
-            cat "$file" | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
+            cat "$file" | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null; echo
         fi
     else
         file_name="$1"
-        curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
+        curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null; echo
     fi
 }

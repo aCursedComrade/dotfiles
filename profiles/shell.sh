@@ -1,12 +1,15 @@
 DOTFILES="$HOME/.dotfiles"
 source $DOTFILES/profiles/funcs.sh
 
-# include ~/.bashrc if we are on bash
+# bash specific opts
 if [ -v "BASH_VERSION" ]; then
     # include .bashrc
     if [ -f "$HOME/.bashrc" ]; then
         source "$HOME/.bashrc"
     fi
+
+    shopt -s histverify
+    shopt -s histreedit
 fi
 
 if locale -a | grep -e "^en_US" &> /dev/null; then
