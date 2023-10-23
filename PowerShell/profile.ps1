@@ -77,3 +77,37 @@ function base64Decode {
     
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($string))
 }
+
+# https://transfer.sh/
+function transfer {
+    param(
+        [Parameter(Mandatory=$true)]
+        [String]$file
+    )
+
+    $absolute_path = Resolve-Path $file
+    $file_name = Split-Path -Leaf $absolute_path
+    $parent = Split-Path -Parent $absolute_path
+
+    if(-Not (Test-Path $file)) {
+        Write-Error "$file does not exist"
+        return
+    }
+
+    if(Test-Path -PathType Container $file) {
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $zipfile = "$parent\$file_name.zip"
+        [IO.Compression.ZipFile]::CreateFromDirectory($absolute_path, $zipfile)
+
+        try {
+            $response = Invoke-WebRequest -Uri "https://transfer.sh/$file_name.zip" -InFile $zipfile -Method Put
+            $response.Content
+        }
+        finally {
+            Remove-Item $zipfile
+        }
+    } else {
+        $response = Invoke-WebRequest -Uri "https://transfer.sh/$file_name" -InFile $file -Method Put
+        $response.Content
+    }
+}
