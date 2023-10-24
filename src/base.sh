@@ -1,7 +1,7 @@
 # checks for installed applcations
 check_bins() {
-    tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap ufw)
-    gui=(firefox code terminator alacritty obsidian thunderbird conky)
+    tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap ufw rclone tlp)
+    gui=(firefox code terminator alacritty obsidian thunderbird conky flameshot okular motrix wireshark vlc tlpui)
 
     for bin in ${tools[@]}; do
         if [ -x "$(command -v $bin)" ]; then
@@ -13,7 +13,7 @@ check_bins() {
 
     for bin in ${gui[@]}; do
         if [ -x "$(command -v $bin)" ]; then
-            echo -e "${GREEN}[+] $bin: OK.${RESET}"
+            echo -e "${GREEN}[+] $bin: OK${RESET}"
         else
             echo -e "${RED}[-] $bin: Not found in PATH${RESET}"
         fi
