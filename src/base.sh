@@ -1,7 +1,7 @@
 # checks for installed applcations
 check_bins() {
-    tools=(xxd jq vim nvim curl sed cut tar zip grep bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap ufw rclone tlp)
-    gui=(firefox code terminator alacritty obsidian thunderbird conky flameshot okular motrix wireshark vlc tlpui)
+    tools=(xxd jq vim nvim curl tar bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap ufw rclone tlp gpg mitmproxy gdb openvpn)
+    gui=(firefox code terminator alacritty obsidian thunderbird conky flameshot okular motrix wireshark vlc tlpui feather imhex)
 
     for bin in ${tools[@]}; do
         if [ -x "$(command -v $bin)" ]; then
