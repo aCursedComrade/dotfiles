@@ -40,7 +40,7 @@ fi
 if [ -x "$(command -v vim)" ]; then
     export EDITOR='vim'
 else
-    export EDITOR='vi'
+    export EDITOR='nano'
 fi
 export TERM='xterm-256color'
 export PAGER='less'
@@ -48,9 +48,9 @@ export LESS='-IRs'
 
 # aliases
 if [ -x "$(command -v eza)" ]; then
-    alias ll='eza -gl -s type --icons'
-    alias la='eza -agl -s type --icons'
-    alias lt='eza -agT -s type --icons'
+    alias ll='eza -gl -s type --icons $@'
+    alias la='eza -agl -s type --icons $@'
+    alias lt='eza -agT -s type --icons $@'
 else
     alias ll="ls --color=auto -lhXF"
     alias la="ls --color=auto -AlhXF"
@@ -68,4 +68,4 @@ if [ -x "$(command -v keychain)" ]; then
     eval $(keychain --ignore-missing --eval -q comrade)
 fi
 
-echo "Yet another day, we survive: $(whoami 2> /dev/null)@$(hostname 2> /dev/null)"
+echo "Yet another day, we survive: $(logname)@$(cat /etc/hostname 2> /dev/null)"

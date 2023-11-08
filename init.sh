@@ -80,15 +80,15 @@ menu() {
                 extra_env
                 unset OVERRIDE_CUR
                 ;;
-            q|Q) check_bins ;;
-            w|W) base_env; extra_env ;;
-            e|E) base_env ;;
-            r|R) extra_env ;;
-            a|A) alacritty_themes ;;
-            n|N) nvim_config ;;
-            h|H) options ;;
-            c|C) clear ;;
-            x|X) break ;;
+            q) check_bins ;;
+            w) base_env; extra_env ;;
+            e) base_env ;;
+            r) extra_env ;;
+            a) alacritty_themes ;;
+            n) nvim_config ;;
+            h) options ;;
+            c) clear ;;
+            x) break ;;
             *) continue
         esac
     done

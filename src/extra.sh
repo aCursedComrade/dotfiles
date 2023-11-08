@@ -23,14 +23,14 @@ nvim_config() {
 
         case $option in
             y|Y)
-                ln -sfn "$CONFIG_ROOT/nvim/" "$HOME/.config/nvim"
+                ln -sfn "$CONFIG_ROOT/config/nvim" "$HOME/.config/nvim"
                 echo -e "${GREEN}[+] $HOME/.config/nvim has been FORCE installed.${RESET}"
                 ;;
             *) echo -e "${YELLOW}[!] Skipping nvim config.${RESET}"
         esac
 
     else
-        ln -s "$CONFIG_ROOT/nvim" "$HOME/.config/nvim"
+        ln -s "$CONFIG_ROOT/config/nvim" "$HOME/.config/nvim"
         echo -e "${GREEN}[+] $HOME/.config/nvim installed.${RESET}"
     fi
 }
@@ -48,7 +48,7 @@ alacritty_themes() {
                 rm -fr "$HOME/.config/alacritty/themes"
                 git clone https://github.com/alacritty/alacritty-theme "$HOME/.config/alacritty/themes"
                 ;;
-            *) echo -e "${YELLOW}[!] Skipping nvim config.${RESET}"
+            *) echo -e "${YELLOW}[!] Skipping alacritty config.${RESET}"
         esac
     else
         git clone https://github.com/alacritty/alacritty-theme "$HOME/.config/alacritty/themes"
