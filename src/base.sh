@@ -1,23 +1,22 @@
 # checks for installed applcations
 check_bins() {
-    tools=(xxd jq vim nvim curl tar bash zsh git keychain htop btop tmux python pnpm cargo firejail aa-status podman wg gsocket nmap ufw rclone tlp gpg mitmproxy gdb openvpn)
-    gui=(firefox code terminator alacritty obsidian thunderbird conky flameshot okular motrix wireshark vlc tlpui feather imhex)
+    gui=(firefox code terminator alacritty obsidian thunderbird conky flameshot okular motrix wireshark vlc tlpui feather imhex timeshift)
+    tools=(xxd jq vim nvim curl tar zsh git keychain htop btop tmux firejail aa-status podman wg gsocket nmap ufw rclone tlp gpg mitmproxy gdb openvpn dog)
+    langs=(rustc python node java)
 
-    for bin in ${tools[@]}; do
-        if [ -x "$(command -v $bin)" ]; then
-            echo -e "${GREEN}[+] $bin: OK.${RESET}"
-        else
-            echo -e "${RED}[-] $bin: Not found in PATH${RESET}"
-        fi
+    lists=(tools langs gui)
+
+    for list in ${lists[@]}; do
+        eval 'bins=("${'$list'[@]}")'
+        for bin in ${bins[@]}; do
+            if [ -x "$(command -v $bin)" ]; then
+                echo -e "${GREEN}[+] $bin: OK.${RESET}"
+            else
+                echo -e "${RED}[-] $bin: Not found in PATH${RESET}"
+            fi
+        done
     done
 
-    for bin in ${gui[@]}; do
-        if [ -x "$(command -v $bin)" ]; then
-            echo -e "${GREEN}[+] $bin: OK${RESET}"
-        else
-            echo -e "${RED}[-] $bin: Not found in PATH${RESET}"
-        fi
-    done
     echo "[#] Done with tools and application check."
 }
 

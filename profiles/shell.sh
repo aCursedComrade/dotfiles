@@ -1,5 +1,6 @@
 DOTFILES="$HOME/.dotfiles"
 source $DOTFILES/profiles/funcs.sh
+export -U XDG_DATA_DIRS="$XDG_DATA_DIRS:$HOME/.local/share"
 
 # bash specific opts
 if [ -v "BASH_VERSION" ]; then
@@ -22,18 +23,18 @@ fi
 
 # add user's private bin to PATH
 if [ -d "$HOME/.local/bin" ]; then
-    export -U PATH="$HOME/.local/bin:$PATH"
+    export -U PATH="$PATH:$HOME/.local/bin"
 fi
 
 # add cargo bin to PATH
 if [ -d "$HOME/.cargo/bin" ]; then
-    export -U PATH="$HOME/.cargo/bin:$PATH"
+    export -U PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 # add pnpm bin to PATH
 if [ -d "$HOME/.local/share/pnpm" ]; then
     export PNPM_HOME="$HOME/.local/share/pnpm"
-    export -U PATH="$PNPM_HOME:$PATH"
+    export -U PATH="$PATH:$PNPM_HOME"
 fi
 
 # set EDITOR
