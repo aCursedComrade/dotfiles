@@ -47,3 +47,30 @@ transfer() {
         curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null; echo
     fi
 }
+
+cheatsh() {
+    [ $# -ne 0 ] && (curl -fsSL https://cht.sh/$1 | $PAGER)
+}
+
+update_discord() {
+    tmp="/tmp/discord.tar.gz"
+    local="$HOME/.local/share"
+    url="https://discord.com/api/download?platform=linux&format=tar.gz"
+
+    [ ! -d "$local" ] && mkdir "$local"
+    curl --progress-bar -fSL -o $tmp $url | tee /dev/null
+    tar xzf $tmp -C $local --recursive-unlink
+    rm -f $tmp
+    sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
+}
+
+update_vscode() {
+    tmp="/tmp/vscode.tar.gz"
+    local="$HOME/.local/share"
+    url="https://code.visualstudio.com/sha/download?build=stable&os=linux-x64"
+
+    [ ! -d "$local" ] && mkdir "$local"
+    curl --progress-bar -fSL -o $tmp $url | tee /dev/null
+    tar xzf $tmp -C $local --overwrite
+    rm -f $tmp
+}
