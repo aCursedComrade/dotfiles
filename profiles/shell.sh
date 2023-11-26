@@ -69,4 +69,4 @@ if [ -x "$(command -v keychain)" ]; then
     eval $(keychain --ignore-missing --eval -q comrade)
 fi
 
-echo "Yet another day, we survive: $USER@$HOST"
+echo "Yet another day, we survive: $USER@$(cat /etc/hostname 2> /dev/null)"

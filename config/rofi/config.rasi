@@ -1,0 +1,9 @@
+configuration {
+    modes: "combi,filebrowser";
+    combi-modes: "window,drun";
+    combi-hide-mode-prefix: true;
+    show-icons: true;
+    terminal: "alacritty";
+}
+
+@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
