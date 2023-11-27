@@ -116,7 +116,6 @@ gaps outer 4
 # window borders
 smart_borders on
 for_window [all] border pixel 1
-
 for_window [urgent="latest"] focus
 
 # Plasma compatibility improvements
@@ -132,8 +131,7 @@ for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
 for_window [class="(?i)*nextcloud*"] floating disable
-# below two lines affects small pop-ups created by plasma like notifications and tray applications
-#for_window [class="plasmashell" title="Plasma"] floating enable, border none, move position 77 ppt 4 ppt
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 1520px 60px
 no_focus [class="plasmashell" window_type="notification"]
 
 for_window [window_role="pop-up"] floating enable

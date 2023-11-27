@@ -8,6 +8,7 @@ set wildignorecase
 
 let mapleader=","
 set timeoutlen=1000
+set scrolloff=10
 filetype plugin indent on
 syntax enable
 
