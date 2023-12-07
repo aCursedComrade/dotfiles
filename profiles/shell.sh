@@ -1,6 +1,9 @@
 DOTFILES="$HOME/.dotfiles"
 source $DOTFILES/profiles/funcs.sh
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:$HOME/.local/share"
+export TERM='xterm-256color'
+export PAGER='less'
+export LESS='-IRs'
 
 # bash specific opts
 if [ -v "BASH_VERSION" ]; then
@@ -43,9 +46,6 @@ if [ -x "$(command -v vim)" ]; then
 else
     export EDITOR='nano'
 fi
-export TERM='xterm-256color'
-export PAGER='less'
-export LESS='-IRs'
 
 # aliases
 if [ -x "$(command -v eza)" ]; then
@@ -69,4 +69,5 @@ if [ -x "$(command -v keychain)" ]; then
     eval $(keychain --ignore-missing --eval -q comrade)
 fi
 
-echo "Yet another day, we survive: $USER@$(cat /etc/hostname 2> /dev/null)"
+echo "Yet another day, we survive: $(whoami 2> /dev/null)@$(hostname 2> /dev/null)"
+
