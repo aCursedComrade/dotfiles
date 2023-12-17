@@ -8,9 +8,9 @@ export LESS='-IRs'
 # bash specific opts
 if [ -v "BASH_VERSION" ]; then
     # include .bashrc
-    if [ -f "$HOME/.bashrc" ]; then
-        source "$HOME/.bashrc"
-    fi
+    #if [ -f "$HOME/.bashrc" ]; then
+    #    source "$HOME/.bashrc"
+    #fi
 
     shopt -s histverify
     shopt -s histreedit
@@ -26,18 +26,18 @@ fi
 
 # add user's private bin to PATH
 if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # add cargo bin to PATH
 if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$PATH:$HOME/.cargo/bin"
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # add pnpm bin to PATH
 if [ -d "$HOME/.local/share/pnpm" ]; then
     export PNPM_HOME="$HOME/.local/share/pnpm"
-    export PATH="$PATH:$PNPM_HOME"
+    export PATH="$PNPM_HOME:$PATH"
 fi
 
 # set EDITOR

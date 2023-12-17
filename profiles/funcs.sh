@@ -12,7 +12,7 @@ pyvenv() {
 # https://cjbarker.com/blog/creating-high-entropy-passwords-on-linux/
 genpasswd() {
     if [ $# -eq 0 ]; then
-        passwd=$(LC_ALL=C tr -dc 'A-Za-z0-9!@#$%^&*()<>/?' < /dev/urandom | head -c 16; echo)
+        passwd=$(LC_ALL=C tr -dc 'A-Za-z0-9!@#$%^&*()<>/?' < /dev/urandom | head -c 24; echo)
         echo "${passwd}"
     else
         # custom length support
