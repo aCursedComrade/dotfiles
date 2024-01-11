@@ -64,13 +64,3 @@ update_discord() {
     sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 }
 
-update_vscode() {
-    tmp="/tmp/vscode.tar.gz"
-    local="$HOME/.local/share"
-    url="https://code.visualstudio.com/sha/download?build=stable&os=linux-x64"
-
-    [ ! -d "$local" ] && mkdir "$local"
-    curl --progress-bar -fSL -o $tmp $url | tee /dev/null
-    tar xzf $tmp -C $local --overwrite
-    rm -f $tmp
-}
