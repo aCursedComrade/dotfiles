@@ -1,7 +1,7 @@
 check_bins() {
-    gui=(firefox vscodium terminator alacritty obsidian thunderbird conky flameshot okular motrix wireshark vlc tlpui feather imhex timeshift)
+    gui=(firefox vscodium terminator alacritty obsidian thunderbird flameshot okular motrix wireshark vlc tlpui feather imhex timeshift)
     tools=(xxd jq vim nvim curl tar zsh git keychain htop btop tmux firejail aa-status podman wg gsocket nmap ufw rclone tlp gpg mitmproxy gdb openvpn dog)
-    langs=(rustc python pip pipx node java)
+    langs=(rustc python pip pipx node java x86_64-w64-mingw32-gcc)
 
     lists=(tools langs gui)
 
