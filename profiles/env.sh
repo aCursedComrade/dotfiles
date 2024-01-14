@@ -1,5 +1,11 @@
+# system specific variables
+if [ -f "$HOME/.envrc" ]; then
+    source "$HOME/.envrc"
+fi
+
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:$HOME/.local/share"
 export TERM='xterm-256color'
+export EDITOR='vim'
 export PAGER='less'
 export LESS='-IRs'
 export GPG_TTY=$(tty)
@@ -28,9 +34,3 @@ if [ -d "$HOME/.local/share/pnpm" ]; then
     export PATH="$PNPM_HOME:$PATH"
 fi
 
-# set EDITOR
-if [ -x "$(command -v vim)" ]; then
-    export EDITOR='vim'
-else
-    export EDITOR='nano'
-fi

@@ -21,7 +21,14 @@ check_bins() {
 
 base_config=$(ls $CONFIG_ROOT/base)
 base_env() {
+    # vim backup dir
     mkdir -p $HOME/.vim/backup/
+
+    # lets just replace existing bashrc with ours
+    if [ -f "$HOME/.bashrc" ]; then
+        mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
+        echo -e "${YELLOW}[!] $HOME/.bashrc moved to $HOME/bashrc.bak${RESET}"
+    fi
 
     for config in ${base_config[@]}; do
         if [ -v "OVERRIDE_CUR" ]; then

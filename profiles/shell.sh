@@ -2,13 +2,18 @@ DOTFILES="$HOME/.dotfiles"
 source $DOTFILES/profiles/funcs.sh
 
 if [ -v "BASH_VERSION" ]; then
-    # include .bashrc
-    #if [ -f "$HOME/.bashrc" ]; then
-    #    source "$HOME/.bashrc"
-    #fi
+    if [[ ${EUID} == 0 ]] ; then
+        PS1='\u@\h \W \$ '
+    else
+        PS1='\u@\h \w \$ '
+    fi
+    source $DOTFILES/profiles/env.sh
 
     shopt -s histverify
     shopt -s histreedit
+    shopt -s histappend
+    shpot -s checkwinsize
+    shopt -s globstar
 fi
 
 if [ -x "$(command -v eza)" ]; then
