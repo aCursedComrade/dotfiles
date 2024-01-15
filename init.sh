@@ -20,7 +20,7 @@ source $CONFIG_ROOT/src/util.sh
 source $CONFIG_ROOT/src/base.sh
 source $CONFIG_ROOT/src/extra.sh
 
-options() {
+menu() {
     # ascii art time
     echo -e "\n"
     echo -e "\t   \\  \\  \\"
@@ -55,7 +55,7 @@ options() {
     echo -e "\n"
 }
 
-menu() {
+main() {
     clear
     options
 
@@ -96,4 +96,4 @@ menu() {
     echo "[+] Enjoy the new environment o7"
 }
 
-menu
+main

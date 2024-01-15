@@ -3,7 +3,6 @@ if [ -f "$HOME/.envrc" ]; then
     source "$HOME/.envrc"
 fi
 
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:$HOME/.local/share"
 export TERM='xterm-256color'
 export EDITOR='vim'
 export PAGER='less'

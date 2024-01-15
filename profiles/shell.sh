@@ -8,11 +8,12 @@ if [ -v "BASH_VERSION" ]; then
         PS1='\u@\h \w \$ '
     fi
     source $DOTFILES/profiles/env.sh
+    HISTCONTROL=ignoreboth
 
     shopt -s histverify
     shopt -s histreedit
     shopt -s histappend
-    shpot -s checkwinsize
+    shopt -s checkwinsize
     shopt -s globstar
 fi
 
