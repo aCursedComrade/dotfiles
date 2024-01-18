@@ -57,7 +57,7 @@ menu() {
 
 main() {
     clear
-    options
+    menu
 
     while :
     do
