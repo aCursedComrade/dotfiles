@@ -1,8 +1,11 @@
 [user]
-	email = acursed_comrade@proton.me
-	name = Loshana Aloka
-	signingkey = B602284E2C82315D
+email = acursed_comrade@proton.me
+name = Loshana Aloka
+signingkey = B602284E2C82315D
+
 [commit]
-	gpgsign = true
+gpgsign = true
+
 [tag]
-	gpgsign = true
+gpgsign = true
+

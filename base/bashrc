@@ -1,1 +1,20 @@
-../profiles/shell.sh
+# bash specific config
+if [[ ${EUID} == 0 ]] ; then
+    PS1='\u@\h \W \$ '
+else
+    PS1='\u@\h \w \$ '
+fi
+
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+shopt -s histverify
+shopt -s histreedit
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s globstar
+
+# source the common shell profile
+source $HOME/.dotfiles/profiles/common.sh
+

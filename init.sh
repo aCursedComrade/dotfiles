@@ -86,7 +86,7 @@ main() {
             r) extra_env ;;
             a) alacritty_themes ;;
             n) nvim_config ;;
-            h) options ;;
+            h) menu ;;
             c) clear ;;
             x) break ;;
             *) continue
