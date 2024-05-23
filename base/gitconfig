@@ -1,11 +1,13 @@
 [user]
-email = acursed_comrade@proton.me
 name = Loshana Aloka
-signingkey = B602284E2C82315D
+email = acursed_comrade@proton.me
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHiKIVsLqjFii0vhj+lz2yotTpuIy15OfrADzryXUf2U acursed_comrade@proton.me
+
+[gpg]
+format = ssh
 
 [commit]
 gpgsign = true
 
 [tag]
 gpgsign = true
-
