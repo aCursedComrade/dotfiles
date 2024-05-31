@@ -52,15 +52,3 @@ cheatsh() {
     [ $# -ne 0 ] && (curl -fsSL https://cht.sh/$1 | $PAGER)
 }
 
-update_discord() {
-    tmp="/tmp/discord.tar.gz"
-    local="$HOME/.local/share"
-    url="https://discord.com/api/download?platform=linux&format=tar.gz"
-
-    [ ! -d "$local" ] && mkdir "$local"
-    curl --progress-bar -fSL -o $tmp $url | tee /dev/null
-    tar xzf $tmp -C $local --recursive-unlink
-    rm -f $tmp
-    sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
-}
-

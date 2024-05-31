@@ -1,0 +1,8 @@
+# unlike .bashrc, .zshrc is not read in non-interactive terminals
+# but instead .zshenv is guranteed to read on all Zsh instances.
+# So we can define our environment environment variables here so
+# they get sourced by applications like the desktop environment
+
+if [ -f "$HOME/.dotfiles/profiles/env.sh" ]; then
+    source "$HOME/.dotfiles/profiles/env.sh"
+fi

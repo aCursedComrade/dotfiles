@@ -29,8 +29,8 @@ set autoindent
 set smartindent
 
 " swap file storage
-set backupdir=$HOME/.vim/backup
-set directory=$HOME/.vim/backup
+set backupdir=$HOME/.cache
+set directory=$HOME/.cache
 
 " paragraph nav
 noremap J }
