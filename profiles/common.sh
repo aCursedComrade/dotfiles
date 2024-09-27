@@ -1,6 +1,7 @@
 DOTFILES="$HOME/.dotfiles"
+
 source $DOTFILES/profiles/funcs.sh
-if [ ! -v "ENV_SOURCED" ]; then
+if [ "$SHLVL" == 1 ]; then
     source $DOTFILES/profiles/env.sh
 fi
 
@@ -14,14 +15,14 @@ else
     alias lt="echo 'No tree view for you :('"
 fi
 
-alias dotfiles="bash $DOTFILES/init.sh"
-alias wtfismyip="curl yaml.myip.wtf"
+alias dotfiles="bash $DOTFILES/src/main.sh"
+alias wtfismyip="curl myip.wtf/yaml"
 alias grep="grep --color=auto $@"
 alias tb="ncat termbin.com 9999"
 alias ip="ip -c=always $@"
 alias pn="pnpm"
 alias nv="nvim"
 
-BOX="$(echo -n "${HOSTNAME:-$(cat /etc/hostname)}" | cut -d '.' -f 1)"
-echo "Yet another day, we survive: $USER@$BOX"
+#BOX="$(echo -n "${HOSTNAME:-$(cat /etc/hostname)}" | cut -d '.' -f 1)"
+#echo "Yet another day, we survive: $USER@$BOX"
 

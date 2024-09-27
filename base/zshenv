@@ -3,6 +3,6 @@
 # So we can define our environment environment variables here so
 # they get sourced by applications like the desktop environment
 
-if [ -f "$HOME/.dotfiles/profiles/env.sh" ]; then
+if [ -f "$HOME/.dotfiles/profiles/env.sh" ] && [ ! -v "ENV_SOURCED" ]; then
     source "$HOME/.dotfiles/profiles/env.sh"
 fi

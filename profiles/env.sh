@@ -20,6 +20,10 @@ if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
+#if [ -d "$HOME/.local/lib" ]; then
+#    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$HOME/.local/lib"
+#fi
+
 # use keychain to start ssh-agent and populate env
 if [ -x "$(command -v keychain)" ]; then
     eval $(keychain --ignore-missing --eval -q comrade)
