@@ -1,7 +1,7 @@
 [user]
 name = Loshana Aloka
 email = acursed_comrade@yahoo.com
-signingkey = 39174DD8
+signingkey = 9205800A39174DD8
 
 [commit]
 gpgsign = true

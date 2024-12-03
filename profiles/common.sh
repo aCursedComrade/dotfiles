@@ -6,13 +6,13 @@ if [ "$SHLVL" == 1 ]; then
 fi
 
 if [ -x "$(command -v eza)" ]; then
-    alias ll="eza -gl -s filename --icons auto $@"
-    alias la="eza -agl -s filename --icons auto $@"
-    alias lt="eza -agT -s filename --icons auto $@"
+    alias ll="eza -gl -s=type --icons=auto $@"
+    alias la="eza -agl -s=type --icons=auto $@"
+    alias lt="eza -agT -s=type --icons=auto $@"
 else
-    alias ll="ls --color=auto -lhF $@"
-    alias la="ls --color=auto -AlhF $@"
-    alias lt="echo 'No tree view for you :('"
+    alias ll="ls --group-directories-first --color -lhF $@"
+    alias la="ls --group-directories-first --color -alhF $@"
+    alias lt="ls --group-directories-first --color -RlhF $@"
 fi
 
 alias dotfiles="bash $DOTFILES/src/main.sh"

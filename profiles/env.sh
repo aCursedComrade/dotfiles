@@ -13,15 +13,15 @@ export GPG_TTY=$(tty)
 #fi
 
 if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$PATH:$HOME/.cargo/bin"
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 #if [ -d "$HOME/.local/lib" ]; then
-#    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$HOME/.local/lib"
+#    export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 #fi
 
 # use keychain to start ssh-agent and populate env
