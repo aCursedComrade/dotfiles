@@ -29,9 +29,9 @@ bindkey '^[[Z' undo                               # shift + tab undo last action
 # enable completion features
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete
+zstyle ':completion:*' auto-description 'Specify: %d'
+zstyle ':completion:*' cache-path ~/.cache/zcompcache
+zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''
@@ -39,20 +39,22 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-cache on
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # History configurations
 HISTFILE=~/.zsh_history
 HISTSIZE=2000
 SAVEHIST=2000
+alias history="history 0"     # force zsh to show the complete history
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history         # share command history data
-alias history="history 0"     # force zsh to show the complete history
+setopt share_history          # share command history data
 
 # use a simple builtin prompt style
 autoload -Uz promptinit

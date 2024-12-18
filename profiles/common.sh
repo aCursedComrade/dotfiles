@@ -6,8 +6,8 @@ if [ "$SHLVL" == 1 ]; then
 fi
 
 if [ -x "$(command -v eza)" ]; then
-    alias ll="eza -gl -s=type --icons=auto $@"
-    alias la="eza -agl -s=type --icons=auto $@"
+    alias ll="eza -glb -s=type --icons=auto $@"
+    alias la="eza -aglb -s=type --icons=auto $@"
     alias lt="eza -agT -s=type --icons=auto $@"
 else
     alias ll="ls --group-directories-first --color -lhF $@"
