@@ -1,10 +1,13 @@
 [user]
 name = Loshana Aloka
-email = acursed_comrade@yahoo.com
-signingkey = 9205800A39174DD8
+email = aloka@comradelab.win
+signingkey = /home/comrade/.ssh/comrade.key.pub
 
 [commit]
 gpgsign = true
 
 [tag]
 gpgsign = true
+
+[gpg]
+format = ssh

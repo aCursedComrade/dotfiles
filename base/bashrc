@@ -1,8 +1,8 @@
 # bash specific config
 if [[ ${EUID} == 0 ]] ; then
-    PS1='\u@\h \W \$ '
+    PS1='[\u@\h \W]\$ '
 else
-    PS1='\u@\h \w \$ '
+    PS1='[\u@\h \w]\$ '
 fi
 
 HISTCONTROL=ignoreboth
@@ -17,4 +17,3 @@ shopt -s globstar
 
 # source the common shell profile
 source $HOME/.dotfiles/profiles/common.sh
-

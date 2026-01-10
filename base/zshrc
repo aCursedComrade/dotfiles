@@ -65,4 +65,3 @@ setopt promptsp           # preserve partial lines
 
 # source the common shell profile
 source $HOME/.dotfiles/profiles/common.sh
-

@@ -26,7 +26,7 @@ fi
 
 # use keychain to start ssh-agent and populate env
 if [ -x "$(command -v keychain)" ]; then
-    eval $(keychain --ignore-missing --eval -q comrade)
+    eval $(keychain --quick --eval -q)
 fi
 
 # user specific variables for this instance
