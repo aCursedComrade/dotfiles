@@ -52,3 +52,9 @@ cheatsh() {
     [ $# -ne 0 ] && (curl -fsSL https://cht.sh/$1 | $PAGER)
 }
 
+# https://stackoverflow.com/q/22656131
+getfontfamily() {
+    param="$1"
+    char=${param:0:1}
+    printf '%x' \'"$char" | xargs -I{} fc-list ":charset={}"
+}
